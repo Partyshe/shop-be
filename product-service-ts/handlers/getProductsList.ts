@@ -12,3 +12,5 @@ export const getProductsList: APIGatewayProxyHandler = async (event) => {
     body: JSON.stringify(products),
   };
 };
+
+export default getProductsList;

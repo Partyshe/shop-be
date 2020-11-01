@@ -5,7 +5,7 @@ export const getProductsById: APIGatewayProxyHandler = async (event) => {
   console.log("getProductsById FN. Event: ", event);
   console.log("getProductsById FN. Products: ", products);
 
-  const { id } = event?.queryStringParameters || {};
+  const { id } = event?.pathParameters || {};
   const product = products.find(product => {
     return product.title === id;
   });

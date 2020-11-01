@@ -5,18 +5,33 @@ export const getProductsById: APIGatewayProxyHandler = async (event) => {
   console.log("getProductsById FN. Event: ", event);
   console.log("getProductsById FN. Products: ", products);
 
-  const { id } = event?.pathParameters || {};
-  const product = products.find(product => {
-    return product.title === id;
-  });
-  console.log("product: ", product);
+  try {
+    const { id } = event?.pathParameters || {};
+    const product = products.find(product => {
+      return product.title === id;
+    });
 
-  return {
-    statusCode: 200,
-    headers: {
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Credentials': true,
-    },
-    body: JSON.stringify(product || {}),
-  };
+    if (!product) {
+      const error = JSON.stringify(
+        {
+          statusCode: 404,
+          body: JSON.stringify({message: `No product with such id ${id}`}),
+        }
+      );
+
+      throw new Error(error);
+    }
+
+    return {
+      statusCode: 200,
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Credentials': true,
+      },
+      body: JSON.stringify(product),
+    };
+  } catch(error) {
+    return JSON.parse(error.message);
+  }
+  
 };

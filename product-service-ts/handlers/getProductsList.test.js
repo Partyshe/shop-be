@@ -4,7 +4,7 @@ jest.mock('./products-mock.json');
 
 describe('getProductsList', () => {
     afterEach(() => jest.resetAllMocks());
-    test('array of products retrieved successfully', async () => {
+    test('getProductsList should return array of products', async () => {
         // Arrange
         products.push({title: 'test'});
 

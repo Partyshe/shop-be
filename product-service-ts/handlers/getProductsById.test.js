@@ -4,7 +4,7 @@ jest.mock('./products-mock.json');
 
 describe('getProductsById', () => {
   afterEach(() => jest.resetAllMocks());
-  test('return product with existing id', async () => {
+  test('getProductsById should return product with existing id', async () => {
     // Arrange
     const testProduct = { title: 'Armani' };
     products.push(testProduct);
@@ -17,7 +17,7 @@ describe('getProductsById', () => {
     expect(response.body).toEqual(JSON.stringify(testProduct));
   });
 
-  test('return 404 error with invalid id', async () => {
+  test('getProductsById should return 404 error with invalid id', async () => {
     // Arrange
     products.push({ title: 'Some' });
 

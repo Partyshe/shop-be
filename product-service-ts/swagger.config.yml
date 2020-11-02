@@ -34,7 +34,7 @@ paths:
         200:
           description: OK
           schema:
-            $ref: '#/definitions/GetProductsById'
+            $ref: '#/definitions/Textile'
         404:
           description: No product with such id
   /products/:
@@ -51,9 +51,9 @@ paths:
           description: OK
           schema:
             items:
-              $ref: '#/definitions/GetProductsById'
+              $ref: '#/definitions/Textile'
 definitions:
-  GetProductsById:
+  Textile:
     type: object
     required:
     - id,

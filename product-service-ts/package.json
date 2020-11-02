@@ -1,7 +1,7 @@
 {
   "name": "product-service-ts",
   "version": "1.0.0",
-  "description": "Serverless webpack example using Typescript",
+  "description": "Product service",
   "main": "handler.js",
   "scripts": {
     "test": "jest"

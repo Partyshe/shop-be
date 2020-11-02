@@ -1,6 +1,6 @@
 import { getProductsById } from '../src/handlers/getProductsById';
-import products from '../src/handlers/products-mock.json';
-jest.mock('./products-mock.json');
+import products from '../src/data/products-mock.json';
+jest.mock('../src/data/products-mock.json');
 
 describe('getProductsById', () => {
   afterEach(() => jest.resetAllMocks());

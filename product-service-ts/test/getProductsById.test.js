@@ -1,5 +1,5 @@
-import { getProductsById } from './getProductsById';
-import products from './products-mock.json';
+import { getProductsById } from '../src/handlers/getProductsById';
+import products from '../src/handlers/products-mock.json';
 jest.mock('./products-mock.json');
 
 describe('getProductsById', () => {

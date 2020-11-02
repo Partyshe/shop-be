@@ -1,5 +1,5 @@
 import { APIGatewayProxyHandler } from 'aws-lambda';
-import products from './products-mock.json';
+import products from '../data/products-mock.json';
 
 export const getProductsList: APIGatewayProxyHandler = async (event) => {
   console.log("getProductsList FN. Event: ", event);

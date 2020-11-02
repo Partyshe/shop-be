@@ -60,6 +60,7 @@ definitions:
     - description,
     - title,
     - price,
+    - imageUrl
     properties:
       id:
         type: string
@@ -74,6 +75,9 @@ definitions:
       price:
         type: number
         example: 3
+      imageUrl:
+        type: string
+        example: https://textileplaza.com.ua/assets/images/items/21752/0591577001516194321.JPG
 host: 96hqzxasyg.execute-api.eu-west-1.amazonaws.com
 schemes:
  - https

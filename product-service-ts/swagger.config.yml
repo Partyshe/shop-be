@@ -35,6 +35,8 @@ paths:
           description: OK
           schema:
             $ref: '#/definitions/Textile'
+        400:
+          description: No product id was provided
         404:
           description: No product with such id
   /products/:

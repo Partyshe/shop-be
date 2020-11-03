@@ -4,6 +4,7 @@ jest.mock('../src/data/products-mock.json');
 
 describe('getProductsById', () => {
   afterEach(() => jest.resetAllMocks());
+
   test('getProductsById should return product with existing id', async () => {
     // Arrange
     const testProduct = { title: 'Armani' };
@@ -28,6 +29,17 @@ describe('getProductsById', () => {
     expect(response.statusCode).toEqual(404);
     expect(response.body).toEqual(
       JSON.stringify({ message: 'No product with such id Test' })
+    );
+  });
+
+  test('getProductsById should return 400 error without id', async () => {
+    // Act
+    const response = await getProductsById({ pathParameters: { id: '' } });
+
+    // Assert
+    expect(response.statusCode).toEqual(400);
+    expect(response.body).toEqual(
+      JSON.stringify({ message: 'No product id was provided' })
     );
   });
 });

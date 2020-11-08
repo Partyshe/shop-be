@@ -1,0 +1,86 @@
+swagger: '2.0'
+info:
+  description: Product API
+  version: 1.0.1
+  title: Product API
+  # put the contact info for your development or API team
+  contact:
+    email: you@your-company.com
+
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+
+# tags are used for organizing operations
+paths:
+  /products/{id}:
+    get:
+      tags:
+      - getProductsById
+      summary: Get specific product by id (title)
+      operationId: searchProduct
+      description: |
+        By passing in product title, you can search for
+        available product in the system
+      produces:
+      - application/json
+      parameters:
+      - in: path
+        name: id
+        description: pass an product title in order to find specific product
+        required: true
+        type: string
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/Textile'
+        400:
+          description: No product id was provided
+        404:
+          description: No product with such id
+  /products/:
+    get:
+      tags:
+      - getProductsList
+      summary: Get all products
+      operationId: addProducts
+      description: Get all products to the system
+      produces:
+      - application/json
+      responses:
+        200:
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/Textile'
+definitions:
+  Textile:
+    type: object
+    required:
+    - id,
+    - description,
+    - title,
+    - price,
+    - imageUrl
+    properties:
+      id:
+        type: string
+        format: uuid
+        example: d290f1ee-6c54-4b01-90e6-d701748f0851
+      description:
+        type: string
+        example: Short Product Description1
+      title:
+        type: string
+        example: Armani
+      price:
+        type: number
+        example: 3
+      imageUrl:
+        type: string
+        example: https://textileplaza.com.ua/assets/images/items/21752/0591577001516194321.JPG
+host: 96hqzxasyg.execute-api.eu-west-1.amazonaws.com
+schemes:
+ - https
+basePath: /dev

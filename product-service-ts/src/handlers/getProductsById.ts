@@ -17,7 +17,7 @@ const getProductId = (event) => {
 }
 
 export const getProductsById: APIGatewayProxyHandler = async (event) => {
-  console.log("getProductsById FN. Event: ", event);
+  console.log("METHOD: getProductsById. Event: ", event);
 
   try {
     const id = getProductId(event);

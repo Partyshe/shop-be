@@ -33,24 +33,29 @@ export const loadProductById = async (id) => {
 };
 
 export const postProduct = async (body: Record<string, any>) => {
-  validateBodyProduct(body);
+  console.log("METHOD: postProduct. Body: ", body);
 
   try {
+    validateBodyProduct(body);
     const product: TextileProduct = {
       title: body.title,
       description: body.description,
       price: body.price,
       image_url: body.image_url,
+      count: body.count
     };
 
+    console.log("METHOD: postProduct. Product object: ", product);
     return await createProduct(product);
   } catch (err) {
-    throw new Error(err.message);
+    throw err;
   }
 };
 
 const validateBodyProduct = (bodyProduct: Record<string, any>) => {
-  let error;
+  console.log('METHOD: validateBodyProduct. START');
+
+  let error: Error;
   if (!bodyProduct) {
     error = new Error('Invalid product was provided');
   }
@@ -63,12 +68,14 @@ const validateBodyProduct = (bodyProduct: Record<string, any>) => {
   else if (!bodyProduct.description) {
     error = new Error('Invalid description was provided');
   }
-  else if (!bodyProduct.img) {
+  else if (!bodyProduct.image_url) {
     error = new Error('Invalid image_url was provided');
   }
 
   if (error) {
-    error.name = 400;
+    error.name = '400';
     throw error;
   }
+
+  console.log('METHOD: validateBodyProduct. END');
 };

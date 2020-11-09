@@ -4,7 +4,7 @@ import { loadProducts } from '../services/product.service';
 import { getResponseObject } from '../utils/api.util';
 
 export const getProductsList: APIGatewayProxyHandler = async (event) => {
-  console.log("getProductsList FN. Event: ", event);
+  console.log("METHOD: getProductsList. Event: ", event);
   try {
     const products = await loadProducts();
     return getResponseObject(

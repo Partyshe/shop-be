@@ -12,6 +12,8 @@ const createProduct = async ({ body }) => {
 
     return getResponseObject(201, product);
   } catch (error) {
+    console.log('METHOD: createProduct. Catch block. ', error);
+
     return getResponseObject(error.name, { message: error.message });
   }
 };

@@ -16,15 +16,15 @@ export const getAllProducts = async () => {
   }
 };
 
-export const getProductById = async (id) => {
+export const getProductById = async (title) => {
   const client = new Client(dbOptions);
   await client.connect();
 
   try {
-    const { rows: product } = await client.query('SELECT * FROM product WHERE id = $1', [id]);
+    const { rows: product } = await client.query('SELECT * FROM product WHERE title = $1', [title]);
     return product[0];
   } catch (err) {
-    throw new Error(`Failed to get product by id ${id}`);
+    throw new Error(`Failed to get product by title ${title}`);
   } finally {
     client.end();
   }

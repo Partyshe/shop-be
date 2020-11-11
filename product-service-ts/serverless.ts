@@ -21,13 +21,6 @@ const serverlessConfiguration: Serverless = {
         'AWS_SECRET_ACCESS_KEY'
       ]
     },
-    // environment: {
-    //   PG_HOST: 'partyshe-database.cadlj7qtpym4.eu-west-1.rds.amazonaws.com',
-    //   PG_PORT: 5432,
-    //   PG_DATABASE: 'textile',
-    //   PG_USERNAME: 'postgres',
-    //   PG_PASSWORD: 'rQOcR8WHeSFZgaJ3cRlI',
-    // }
     environment: {
       PG_HOST: process.env['PG_HOST'],
       PG_PORT: process.env['PG_PORT'],
